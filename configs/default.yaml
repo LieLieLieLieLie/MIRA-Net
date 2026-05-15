@@ -1,0 +1,59 @@
+project:
+  seed: 42
+  output_dir: outputs
+  device: auto
+
+data:
+  root_dir: dataset
+  hep2_dir: dataset/HEp-Dataset
+  camelyon_dir: dataset/histopathologic-cancer-detection
+  camelyon_x: dataset/histopathologic-cancer-detection/camelyonpatch_level_2_split_train_x.h5
+  camelyon_y: dataset/histopathologic-cancer-detection/camelyonpatch_level_2_split_train_y.h5
+  camelyon_valid_x: dataset/histopathologic-cancer-detection/camelyonpatch_level_2_split_valid_x.h5
+  camelyon_valid_y: dataset/histopathologic-cancer-detection/camelyonpatch_level_2_split_valid_y.h5
+  camelyon_test_x: dataset/histopathologic-cancer-detection/camelyonpatch_level_2_split_test_x.h5
+  camelyon_test_y: dataset/histopathologic-cancer-detection/camelyonpatch_level_2_split_test_y.h5
+  val_ratio: 0.15
+  test_ratio: 0.10
+  num_workers: 0
+
+model:
+  base_channels: 32
+  dropout: 0.3
+  name: proposed
+
+hep2:
+  image_size: 128
+  classes: 6
+  class_names:
+    - Homogeneous
+    - Coarse speckled
+    - Fine speckled
+    - Centromere
+    - Nucleolar
+    - Cytoplasmic
+  epochs: 8
+  batch_size: 64
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  max_samples: 6000
+  reconstruction_weight: 0.05
+  label_smoothing: 0.10
+  noise_sigma_min: 5
+  noise_sigma_max: 35
+
+camelyon:
+  image_size: 96
+  classes: 2
+  class_names:
+    - Normal
+    - Tumor
+  epochs: 6
+  batch_size: 128
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  max_samples: 8000
+  max_val_samples: 2000
+  max_test_samples: 2000
+  reconstruction_weight: 0.0
+  label_smoothing: 0.05
