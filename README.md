@@ -2,7 +2,7 @@
 
 本项目实现了一个面向实验室医学图像的多任务深度学习框架 **MIRA-Net**。模型以共享残差编码器为核心，引入 CBAM 注意力模块，同时支持 HEp-2 间接免疫荧光图像的 ANA 模式分类与去噪重建，以及 PatchCamelyon 病理图像的肿瘤二分类实验。
 
-代码主要用于论文实验复现、消融对比、指标统计、论文图表生成，以及 draw.io 论文示意图素材导出。
+代码主要用于论文实验复现、消融对比、指标统计、论文图表生成。
 
 ## 主要功能
 
@@ -11,7 +11,6 @@
 - 多模型对比：`simple_cnn`、`residual_cnn`、`skipnet_no_cbam`、`proposed`。
 - Proposed 模型：残差编码器 + CBAM 注意力 + 分类头 + HEp-2 重建解码器。
 - 自动输出训练曲线、混淆矩阵、指标表、跨数据集对比、注意力图、重建图等论文图表。
-- 提供 draw.io 摘要图、PSFNet 图等素材生成脚本。
 
 ## 项目结构
 
@@ -22,11 +21,6 @@ DIP_code/
 ├── dataset/
 │   ├── HEp-Dataset/
 │   └── histopathologic-cancer-detection/
-├── drawio/
-│   ├── export_framework_materials.py
-│   ├── generate_numbered_drawio_materials.py
-│   ├── PSFNet/
-│   └── *.drawio
 ├── outputs/
 ├── src/
 │   └── dip_medimg/
@@ -201,42 +195,6 @@ python main.py --help
 | `hep2_fig11_attention_maps.pdf` | HEp-2 注意力可视化 |
 | `camelyon_fig12_patch_panel.pdf` | PatchCamelyon TP/FP/FN 示例 |
 | `combined_fig9_cross_dataset.pdf` | 跨数据集指标对比 |
-
-## draw.io 素材生成
-
-`drawio/` 目录中包含论文示意图相关脚本。
-
-### 摘要图素材
-
-生成 HEp-2 重建、注意力、分类预测，以及 PatchCamelyon patch 素材：
-
-```powershell
-cd drawio
-python export_framework_materials.py --max-per-class 2 --device cpu
-python generate_numbered_drawio_materials.py
-```
-
-输出包括：
-
-- `drawio/framework_materials/`
-- `drawio/01.png` 到 `drawio/18.png`
-- `drawio/numbered_materials_mapping.md`
-- `drawio/abstract_summary_preview.png`
-
-### PSFNet 右侧素材
-
-```powershell
-cd drawio\PSFNet
-python generate_psfnet_right_materials.py
-```
-
-输出包括：
-
-- `01_psf.png`
-- `02_gaussian.png`
-- `03_normalization.png`
-- `04_final_fixed_size_normalized_psf.png`
-- `psfnet_right_four_preview.png`
 
 ## 配置文件
 
