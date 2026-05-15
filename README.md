@@ -257,38 +257,6 @@ configs/default.yaml
 - 重建损失权重 `reconstruction_weight`
 - 模型基础通道数 `base_channels`
 
-## GitHub 上传建议
-
-建议提交：
-
-- `src/`
-- `configs/`
-- `drawio/` 中的脚本和 `.drawio` 文件
-- `main.py`
-- `requirements.txt`
-- `README.md`
-
-不建议直接提交：
-
-- `dataset/`
-- 大体积 `outputs/*.pt`
-- 大体积中间图表或缓存
-- `__pycache__/`
-- `.idea/`
-
-推荐在 `.gitignore` 中忽略：
-
-```gitignore
-dataset/
-outputs/
-__pycache__/
-*.pyc
-.idea/
-.venv/
-```
-
-如果需要展示论文图，可以只选择性提交少量压缩后的 PDF/PNG 示例。
-
 ## 常见问题
 
 ### 1. 找不到 HEp-2 数据
